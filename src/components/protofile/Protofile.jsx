@@ -24,14 +24,6 @@ const Protofile = () => {
       urlGitHub: "https://github.com/AmerSafia/react-application-logger",
       urlDemo: "https://logger-demo-app.netlify.app/",
     },
-    {
-      id: Math.random(),
-      title: "Live Chat Vuejs",
-      img: "./assets/liveDemoChat.png",
-      urlGitHub: "https://github.com/AmerSafia/chatroom-vue-with-firebase  ",
-      urlDemo: "https://project1-ed4d1.web.app/",
-    },
-
   ];
   return (
     <section id="protofile">
