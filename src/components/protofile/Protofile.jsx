@@ -24,6 +24,19 @@ const Protofile = () => {
       urlGitHub: "https://github.com/AmerSafia/react-application-logger",
       urlDemo: "https://logger-demo-app.netlify.app/",
     },
+    {
+      id: Math.random(),
+      title: "E-commerce React",
+      img: "./assets/shopReact.png",
+      urlGitHub: "https://github.com/AmerSafia/ecommerce-react--next",
+      urlDemo: "https://ecommerce-react-next.vercel.app/",
+    },{
+      id: Math.random(),
+      title: "Memory Game",
+      img: "./assets/magicGame.png",
+      urlGitHub: "https://github.com/AmerSafia/memory-game-react",
+      urlDemo: "https://memory-game-react-psi.vercel.app/",
+    },
   ];
   return (
     <section id="protofile">
