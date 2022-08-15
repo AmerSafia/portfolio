@@ -1,9 +1,8 @@
 import "./header.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import CTA from "./CTA";
 import HeaderSocials from "./HeaderSocials";
 import { useStateContext } from "../../context/stateContext";
-import { client, urlFor } from "../../lib/client";
 
 const Header = () => {
   const {

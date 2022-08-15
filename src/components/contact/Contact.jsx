@@ -4,10 +4,13 @@ import { MdOutlineEmail } from "react-icons/md";
 import { RiMessengerLine } from "react-icons/ri";
 import { BsWhatsapp } from "react-icons/bs";
 import emailjs from "@emailjs/browser";
+import { useStateContext } from "../../context/stateContext";
 
 const Contact = () => {
   const form = useRef();
-
+  const {
+    user: { messengerUrl, whatsapp, email },
+  } = useStateContext();
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
@@ -39,9 +42,9 @@ const Contact = () => {
           <article className="contact__option">
             <MdOutlineEmail className="contact__option-icon" />
             <h4>Email</h4>
-            <h5>Amer.safia321@gmail.com</h5>
+            <h5>{email}</h5>
             <a
-              href="mailto:Amer.safia321@gmail.com"
+              href={`mailto:${email}`}
               target={"_blank"}
               rel="noopener noreferrer"
             >
@@ -52,20 +55,16 @@ const Contact = () => {
             <RiMessengerLine className="contact__option-icon" />
             <h4>Messenger</h4>
             <h5>Amer Safia</h5>
-            <a
-              href="https://m.me/amer.safia"
-              target={"_blank"}
-              rel="noopener noreferrer"
-            >
+            <a href={messengerUrl} target={"_blank"} rel="noopener noreferrer">
               Send a message{" "}
             </a>
           </article>
           <article className="contact__option">
             <BsWhatsapp className="contact__option-icon" />
             <h4>Whatsapp</h4>
-            <h5>+962786830335</h5>
+            <h5>+{whatsapp}</h5>
             <a
-              href="https://api.whatsapp.com/send?phone=962786830335"
+              href={`https://api.whatsapp.com/send?phone=${whatsapp}`}
               target={"_blank"}
               rel="noopener noreferrer"
             >

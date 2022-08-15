@@ -4,12 +4,16 @@ import { FaFacebookF } from "react-icons/fa";
 import { FiInstagram } from "react-icons/fi";
 import { IoLogoTwitter } from "react-icons/io";
 import { AiOutlineLinkedin, AiOutlineGithub } from "react-icons/ai";
+import { useStateContext } from "../../context/stateContext";
 
 const Footer = () => {
+  const {
+    user: {name, facebookUrl, twitterUrl ,linkedInUrl,githubUrl,instagramUrl},
+  } = useStateContext();
   return (
     <footer>
       <a href="#Home" rel="noopener noreferrer" className="footer__logo">
-        Amer Safia
+       {name}
       </a>
       <ul className="preimalink">
         <li>
@@ -41,35 +45,35 @@ const Footer = () => {
 
       <div className="footer__soicals">
         <a
-          href="https://web.facebook.com/amer.safia/"
+          href={facebookUrl}
           target={"_blank"}
           rel="noopener noreferrer"
         >
           <FaFacebookF />
         </a>
         <a
-          href="https://www.instagram.com/amer.safia/"
+          href={instagramUrl}
           target={"_blank"}
           rel="noopener noreferrer"
         >
           <FiInstagram />
         </a>
         <a
-          href="https://twitter.com/Amersafia1"
+          href={twitterUrl}
           target={"_blank"}
           rel="noopener noreferrer"
         >
           <IoLogoTwitter />
         </a>
         <a
-          href="https://www.linkedin.com/in/amer-safia-b463a115a/"
+          href={linkedInUrl}
           target={"_blank"}
           rel="noopener noreferrer"
         >
           <AiOutlineLinkedin />
         </a>
         <a
-          href="https://github.com/AmerSafia"
+          href={githubUrl}
           target={"_blank"}
           rel="noopener noreferrer"
         >

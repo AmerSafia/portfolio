@@ -29,6 +29,45 @@ export default {
          },
       },
       {
+         name: "facebookUrl",
+         title: "FacebookUrl",
+         type: "string",
+      },
+      {
+         name: "messengerUrl",
+         title: "messengerUrl",
+         type: "string",
+      },
+      {
+         name: "whatsapp",
+         title: "Whatsapp",
+         type: 'number',
+      },
+      {
+         name: "email",
+         title: "Email",
+         type: 'email',
+      },
+      {
+         name: "twitterUrl",
+         title: "TwitterUrl",
+         type: "string",
+      }, {
+         name: "linkedInUrl",
+         title: "LinkedInUrl",
+         type: "string",
+      },
+      {
+         name: "githubUrl",
+         title: "GithubUrl",
+         type: "string",
+      },
+      {
+         name: "instagramUrl",
+         title: "InstagramUrl",
+         type: "string",
+      },
+      {
          name: "detailsExperiance",
          title: "years of Experiance",
          type: "number",
