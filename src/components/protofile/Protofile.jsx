@@ -1,60 +1,36 @@
 import "./protofile.css";
-import React from "react";
+import React, { useEffect,useState } from "react";
+import { client, urlFor } from "../../lib/client";
 
 const Protofile = () => {
-  const data = [
-    {
-      id: Math.random(),
-      title: "Live Chat Vuejs",
-      img: "./assets/liveDemoChat.png",
-      urlGitHub: "https://github.com/AmerSafia/chatroom-vue-with-firebase  ",
-      urlDemo: "https://project1-ed4d1.web.app/",
-    },
-    {
-      id: Math.random(),
-      title: "Music Playlist",
-      img: "./assets/musicPlaylist.png",
-      urlGitHub: "https://github.com/AmerSafia/music-safia",
-      urlDemo: "https://music-safia.firebaseapp.com/",
-    },
-    {
-      id: Math.random(),
-      title: "Custom Table Pagenation",
-      img: "./assets/Table.png",
-      urlGitHub: "https://github.com/AmerSafia/react-application-logger",
-      urlDemo: "https://logger-demo-app.netlify.app/",
-    },
-    {
-      id: Math.random(),
-      title: "E-commerce React",
-      img: "./assets/shopReact.png",
-      urlGitHub: "https://github.com/AmerSafia/ecommerce-react--next",
-      urlDemo: "https://ecommerce-react-next.vercel.app/",
-    },{
-      id: Math.random(),
-      title: "Memory Game",
-      img: "./assets/magicGame.png",
-      urlGitHub: "https://github.com/AmerSafia/memory-game-react",
-      urlDemo: "https://memory-game-react-psi.vercel.app/",
-    },
-  ];
+const [projects, setProjects] = useState([])
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const query = '*[_type=="projects"]';
+    const res = await client.fetch(query);
+    setProjects(res)
+  };
   return (
     <section id="protofile">
       <h5>My Recent Work</h5>
-      <h2>Protofile</h2>
+      <h2>portfolio</h2>
       <div className="container protofile__container">
-        {data &&
-          data.map((article) => {
+        {projects &&
+          projects.map((project) => {
             return (
-              <article className="protofile__item" key={article.id}>
+              <article className="protofile__item" key={project._id}>
                 <div className="protofile__item-image">
-                  <img src={article.img} alt="" />
+                  <img src={urlFor(project.image)} alt="" />
                 </div>
-                <h3>{article.title}</h3>
+                <h3>{project.title}</h3>
                 <div className="protofile__item-cta">
                   <a
                     className="btn"
-                    href={article.urlGitHub}
+                    href={project.urlGitHub}
                     target={"_blank"}
                     rel="noopener noreferrer"
                   >
@@ -62,7 +38,7 @@ const Protofile = () => {
                   </a>
                   <a
                     className="btn btn-primary"
-                    href={article.urlDemo}
+                    href={project.urlDemo}
                     target={"_blank"}
                     rel="noopener noreferrer"
                   >

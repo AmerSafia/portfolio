@@ -1,27 +1,13 @@
 import "./about.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaAward } from "react-icons/fa";
 import { FiUsers } from "react-icons/fi";
 import { VscFolderLibrary } from "react-icons/vsc";
-const aboutDetails = [
-  {
-    title: "Experiance",
-    icon: <FaAward className="about__icon" />,
-    details: "1+ year Working",
-  },
-  {
-    title: "Clients",
-    icon: <FiUsers className="about__icon" />,
-    details: "5+Worldwide",
-  },
-  {
-    title: "Projects",
-    icon: <VscFolderLibrary className="about__icon" />,
-    details: "10+Completed",
-  },
-];
+import { useStateContext } from "../../context/stateContext";
 
 const About = () => {
+  const { user } = useStateContext();
+
   return (
     <section id="about">
       <h5>Get To Know</h5>
@@ -35,24 +21,29 @@ const About = () => {
         </div>
         <div className="about__content">
           <div className="about__cards">
-            {aboutDetails.map((card) => {
-              return (
-                <article className="about__card" key={card.title}>
-                  {card.icon}
-                  <h5>{card.title}</h5>
-                  <small style={{ fontSize: "0.7rem" }}>{card.details}</small>
-                </article>
-              );
-            })}
+            <article className="about__card">
+              <FaAward className="about__icon" />
+              <h5>Experiance</h5>
+              <small style={{ fontSize: "0.7rem" }}>
+                {user?.detailsExperiance}+ year Working
+              </small>
+            </article>
+            <article className="about__card">
+              <FiUsers className="about__icon" />
+              <h5>Clients</h5>
+              <small style={{ fontSize: "0.7rem" }}>
+                {user?.detailsClients}+Worldwide
+              </small>
+            </article>
+            <article className="about__card">
+              <VscFolderLibrary className="about__icon" />
+              <h5>Projects</h5>
+              <small style={{ fontSize: "0.7rem" }}>
+                {user?.detailsProjects}+Completed
+              </small>
+            </article>
           </div>
-          <p>
-            Experienced Frontend Developer with a demonstrated history of
-            working in the computer software industry. Skilled in HTML,
-            JS(React, Vue, Node), SASS, Web Applications, and Front-end
-            Development. Strong engineering professional with a Bachelor's
-            degree focused in Information Technology from Al-Al Byate University
-            .
-          </p>
+          <p>{user?.description}</p>
           <a href="#contact" className="btn btn-primary">
             {" "}
             Lets Talk

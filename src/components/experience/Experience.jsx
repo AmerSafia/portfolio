@@ -1,26 +1,25 @@
 import "./experience.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsPatchCheckFill } from "react-icons/bs";
-
-const experianceLangFront = [
-  { name: "Html", experiance: "Experianced" },
-  { name: "Css", experiance: "Experianced" },
-  { name: "JavaScript", experiance: "Experianced" },
-  { name: "VueJS", experiance: "intermediate" },
-  { name: "ReactJS", experiance: "intermediate" },
-  { name: "Sass", experiance: "intermediate" },
-  { name: "pug", experiance: "Basic" },
-];
-
-const experianceLangBack = [
-  { name: "NodeJS", experiance: "intermediate" },
-  { name: "MongoDB", experiance: "intermediate" },
-  { name: "php", experiance: "Basic" },
-  { name: "Firebase", experiance: "intermediate" },
-  { name: "NoSql", experiance: "Basic" },
-  { name: "MySql", experiance: "Basic" },
-];
+import { client } from "../../lib/client";
 const Experience = () => {
+  const [frontendLang, setFrontendLang] = useState([]);
+  const [backendLang, setBackendLang] = useState([]);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const query = '*[_type=="experience"]';
+    const res = await client.fetch(query);
+    setFrontendLang(filterDataByLang("frontend", res));
+    setBackendLang(filterDataByLang("backend", res));
+  };
+  const filterDataByLang = (type, data) => {
+    return data.filter((ele) => {
+      return ele.type === type;
+    });
+  };
   return (
     <section id="experience">
       <h5>What Skills I Have</h5>
@@ -29,13 +28,13 @@ const Experience = () => {
         <div className="experience__frontend">
           <h3>Frontend Developmet</h3>
           <div className="experience__content">
-            {experianceLangFront.map((lang) => {
+            {frontendLang && frontendLang.map((item) => {
               return (
-                <article className="experience__details"  key={lang.name}> 
+                <article className="experience__details" key={item._id}>
                   <BsPatchCheckFill className="experience__details-icon" />
                   <div>
-                    <h4>{lang.name}</h4>
-                    <small className="text-light">{lang.experiance}</small>
+                    <h4>{item.language}</h4>
+                    <small className="text-light">{item.experience}</small>
                   </div>
                 </article>
               );
@@ -45,13 +44,13 @@ const Experience = () => {
         <div className="experience__backend">
           <h3>Backend Developmet</h3>
           <div className="experience__content">
-            {experianceLangBack.map((lang) => {
+            {backendLang && backendLang.map((item) => {
               return (
-                <article className="experience__details" key={lang.name}>
+                <article className="experience__details" key={item._id}>
                   <BsPatchCheckFill className="experience__details-icon" />
                   <div>
-                    <h4>{lang.name}</h4>
-                    <small className="text-light">{lang.experiance}</small>
+                    <h4>{item.language}</h4>
+                    <small className="text-light">{item.experience}</small>
                   </div>
                 </article>
               );
