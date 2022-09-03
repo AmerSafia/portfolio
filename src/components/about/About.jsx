@@ -70,7 +70,7 @@ const About = () => {
             <article className="about__card">
               <AiOutlineEye className="about__icon" />
               <h5>Views </h5>
-              <small style={{ fontSize: "0.7rem" }}>{views.views}</small>
+              <small style={{ fontSize: "0.7rem" }}>{views.views} Visitors</small>
             </article>
           </div>
           <p>{user?.description}</p>
