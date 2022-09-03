@@ -30,8 +30,8 @@
 }
 .about__cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
 }
 .about__card {
   background: var(--color-bg-variant);
@@ -40,6 +40,7 @@
   padding: 2rem;
   text-align: center;
   transition: var(--transition);
+  min-width: 140px;
 }
 
 .about__card:hover {
@@ -81,7 +82,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  
   .about__me {
     width: 65%;
     margin: 0 auto 3rem;
@@ -93,7 +93,7 @@
   .about__content {
     text-align: center;
   }
-  .about__content p{
-    margin: 1.5rem 0 ;
+  .about__content p {
+    margin: 1.5rem 0;
   }
 }
