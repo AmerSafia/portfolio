@@ -15,7 +15,7 @@ const [projects, setProjects] = useState([])
     setProjects(res)
   };
   return (
-    <section id="protofile">
+    <section id="portfolio">
       <h5>My Recent Work</h5>
       <h2>portfolio</h2>
       <div className="container protofile__container">
